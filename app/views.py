@@ -1,21 +1,8 @@
 from flask import render_template, request,redirect,url_for
 from app import app
-from .request import get_news
+from .request import get_news ,get_article
 
 
-# Views
-# @app.route('/')
-# def index():
-
-#     '''
-#     View root page function that returns the index page and its data
-#     '''
-
-#     # Getting popular movie
-#     latest_news = get_news('latest')
-#     print(latest_news)
-#     title = 'Home - Welcome to The best Movie Review Website Online'
-#     return render_template('index.html', title = title,latest = latest_news)
 
 @app.route('/', methods=['GET'])
 def index():
@@ -26,8 +13,30 @@ def index():
     
     news = get_news()
     # print(news)
-    title = "News_Highlight"
+    title = "News"
     
     return render_template('index.html', news = news, title=title)
+
+
+
+
+
+@app.route('/source/<id>')
+def article(id):
+    '''
+    view news page function that returns the news details  and its data
+    '''
+    
+    articles = get_article(id)
+    title = "News_Highlight"
+    
+    return render_template('article.html', articles = articles, title=title)
+
+
+
+
+
+
+  
     
     

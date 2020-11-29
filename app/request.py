@@ -3,6 +3,7 @@ import urllib.request,json
 from .models import news
 
 News = news.News
+NewsArticle = news.NewsArticle
 
 
 
@@ -11,6 +12,10 @@ api_key = app.config['NEWS_API_KEY']
 
 # Getting the movie base url
 base_url = app.config["NEWS_API_BASE_URL"]
+news_article_url = app.config['NEWS_ARTICLE_URL']
+
+
+
 
 
 
@@ -63,9 +68,6 @@ def process_source(news_list):
     return news_source
 
 
-
-
-
 def process_article(news_list):
     """
     Function  that processes the news article and transform them to a list of Objects
@@ -92,3 +94,26 @@ def process_article(news_list):
             news_article.append(news_object)
 
     return news_article
+
+
+#Getting news articles:
+def get_article(id):
+    """
+  Function that gets the json response to our url request
+  """
+    get_news_url = news_article_url.format(id, api_key)
+
+    with urllib.request.urlopen(get_news_url) as url:
+        get_news_data = url.read()
+        get_news_response = json.loads(get_news_data)
+
+        news_article = None
+
+        if get_news_response["articles"]:
+            news_article_list = get_news_response["articles"]
+            news_article = process_article(news_article_list)
+
+    return news_article
+
+
+
