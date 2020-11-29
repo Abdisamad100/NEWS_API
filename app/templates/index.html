@@ -7,11 +7,32 @@
         {% else %}
         <title> Welcome to the best News Review website </title>
         {% endif %}
+
+       {% import 'macros.html' as macro %}
     </head>
     <body>
         <body>
-            <!-- Popular movie section  -->
-            <h3> News </h3>
+        
+            {% block content %}
+  <div class="container">
+    <u><h1 class="text-center" style="font-size: 80px;">NEWS SOURCES</h1></u>
+      <hr>
+
+      <!-- Poster background -->
+      <div class="row">
+        {% if news %}
+            {{macro.displayNews(news)}}
+        {% else %}
+            <h3 class="text-center">You have no news </h3>
+        {% endif %}
+      </div>
+  
+  </div>
+  {% endblock %}
+            
+                
+        
+            
              
      </body>
     </body>
