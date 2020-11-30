@@ -1,5 +1,5 @@
  # NEWS_API
-   An application that allows user to explore various news sources and articles .its usefull for adults and works who doesn't have time to get news on time in tv.
+   An application that allows user to explore various news sources and articles .
 # Demo
 Here is a working live demo : 
 
