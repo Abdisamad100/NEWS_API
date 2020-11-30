@@ -1,10 +1,10 @@
-from flask import render_template, request,redirect,url_for
-from app import app
-from .request import get_news ,get_article
+from flask import render_template,request,redirect,url_for
+from . import main
+from ..request import get_news , get_article
 
 
 
-@app.route('/', methods=['GET'])
+@main.route('/', methods=['GET'])
 def index():
 
     '''
@@ -21,7 +21,7 @@ def index():
 
 
 
-@app.route('/source/<id>')
+@main.route('/source/<id>')
 def article(id):
     '''
     view news page function that returns the news details  and its data
