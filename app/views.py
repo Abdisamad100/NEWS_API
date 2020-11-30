@@ -28,7 +28,7 @@ def article(id):
     '''
     
     articles = get_article(id)
-    title = "News_Highlight"
+    title = "News"
     
     return render_template('article.html', articles = articles, title=title)
 
